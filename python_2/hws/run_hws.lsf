@@ -1,0 +1,21 @@
+#!/bin/bash 
+
+#BSUB -J run_hws
+#BSUB -n 1
+#BSUB -R "rusage[mem=9G]"
+#BSUB -q s_long
+#BSUB -o stdout%J.out
+#BSUB -e stdout%J.err
+#BSUB -P 0564
+
+MODELS_nonCP=('BCCR-AUTH' 'BTU' 'CMCC' 'CNRM' 'ETHZ' 'FZJ-IDL' 'HCLIM' 'ICTP' 'KIT' 'KNMI' 'UKMO') 
+MODELS_CP=('BCCR-AUTH' 'BTU' 'CMCC' 'CNRM' 'ETHZ' 'FZJ-IDL' 'HCLIM' 'ICTP' 'KIT' 'KNMI' 'UKMO' 'JLU')
+
+# Loop through the indices
+#for M in $(seq 0 $((${#MODELS_CP[@]} - 1))) ; do
+#   python make_HW_RCP85_on_RCP85_clima_CP.py "$M" > /users_home/cmcc/ls21622/tmp/.log.${MODELS_CP[$M]}
+#done
+
+M=10
+python make_HW_RCP85_on_RCP85_clima_CP.py "$M" > /users_home/cmcc/ls21622/tmp/.log.${MODELS_CP[$M]}
+
